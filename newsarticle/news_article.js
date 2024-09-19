@@ -1,20 +1,20 @@
 // Step 3: Defining object and variables for XMLHttpRequest
 var xhr = new XMLHttpRequest();
-var url = './health_article.json';
+var url = './news_article.json'; // Link para o arquivo JSON
 
 // Step 4: URL definition and request set up
-xhr.open('GET', url, true);
+xhr.open('GET', url, true); // Configurando o método GET de forma assíncrona
 
 // Step 5: Response type specification
-xhr.responseType = 'json';
+xhr.responseType = 'json'; // Informando que o retorno será em formato JSON
 
 // Step 6: Handling the 'onload' event
 xhr.onload = function() {
     if (xhr.status === 200) { // Verifica se o request foi bem sucedido
-        var articles = xhr.response.articles;
-        var articlesDiv = document.getElementById('articles');
+        var articles = xhr.response.articles; // Obtendo os artigos do JSON
+        var articlesDiv = document.getElementById('articles'); // Selecionando o elemento HTML onde o conteúdo será exibido
 
-        // Step 7: Iterating through articles and constructing HTML
+        // Iterando pelos artigos e construindo o HTML dinamicamente
         articles.forEach(function(article) {
             var articleDiv = document.createElement('div');
             articleDiv.classList.add('article');
@@ -52,10 +52,10 @@ xhr.onload = function() {
             articleDiv.appendChild(benefitsHeader);
             articleDiv.appendChild(benefitsList);
 
-            articlesDiv.appendChild(articleDiv);
+            articlesDiv.appendChild(articleDiv); // Adicionando o artigo ao div principal
         });
     } else {
-        console.error('Failed to load articles:', xhr.statusText);
+        console.error('Failed to load news articles:', xhr.statusText);
     }
 };
 
